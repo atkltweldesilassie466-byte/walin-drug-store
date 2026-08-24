@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walin Drug Store | ዋሊን መድኃኒት መደብር</title>
+    <style>
+        /* አጠቃላይ የድረ-ገጹ ዲዛይን */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f4f7f6; 
+        }
+        
+        /* የላይኛው ክፍል (Header) ዲዛይን */
+        header { 
+            background-color: #ffffff; 
+            padding: 15px 30px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        }
+        .logo-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
+        .logo { 
+            height: 70px; 
+            border-radius: 50%; 
+            object-fit: cover;
+        }
+        .logo-container h2 {
+            color: #0b5e3b;
+            margin: 0;
+        }
+
+        /* የ AI አገልግሎት ቁልፍ ዲዛይን */
+        .ai-btn { 
+            background-color: #007bff; 
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 20px; 
+            cursor: pointer; 
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .ai-btn:hover { 
+            background-color: #0056b3; 
+        }
+
+        /* የመሀል ማስታወቂያ ክፍል (Hero Section) */
+        .hero { 
+            background-color: #28a745; 
+            color: white; 
+            text-align: center; 
+            padding: 50px 20px; 
+        }
+        .hero h1 { margin-top: 0; }
+        
+        /* የስልክ እና አድራሻ ማስፈንጠሪያዎች (Links) */
+        .contact-info {
+            margin-top: 20px;
+        }
+        .contact-info a { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: bold; 
+            margin: 10px; 
+            display: inline-block; 
+            padding: 12px 20px; 
+            border: 2px solid white; 
+            border-radius: 30px; 
+            background-color: transparent;
+            transition: 0.3s;
+        }
+        .contact-info a:hover { 
+            background-color: white; 
+            color: #28a745; 
+        }
+
+        /* የመድኃኒቶች ዝርዝር ዲዛይን */
+        .container { 
+            max-width: 1100px; 
+            margin: 40px auto; 
+            padding: 20px; 
+        }
+        .section-title {
+            text-align: center; 
+            color: #28a745; 
+            margin-bottom: 30px;
+        }
+        .medicines { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; 
+        }
+        .card { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+            border-top: 4px solid #28a745;
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 { 
+            color: #333; 
+            margin-top: 0; 
+        }
+        .price { 
+            color: #e83e8c; 
+            font-size: 1.3em; 
+            font-weight: bold; 
+            margin: 10px 0;
+        }
+        .desc { 
+            color: #555; 
+            line-height: 1.5; 
+        }
+
+        /* የግርጌ ማስታወሻ (Footer) */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- የላይኛው ክፍል (Header) -->
+    <header>
+        <div class="logo-container">
+            <!-- ሎጎው እዚህ ይገባል (durag '.jpg) -->
+            <img src="durag '.jpg" alt="Walin Drug Store Logo" class="logo">
+            <h2>Walin Drug Store</h2>
+        </div>
+        <!-- የ AI አገልግሎት Button -->
+        <button class="ai-btn" onclick="openAI()">🤖 የ AI ረዳት</button>
+    </header>
+
+    <!-- ዋና ማስተዋወቂያ (Hero Section) -->
+    <div class="hero">
+        <h1>እንኳን ወደ ዋሊን መድኃኒት መደብር በደህና መጡ!</h1>
+        <p>የታዘዘልዎትን መድኃኒት በፍጥነት እና በጥራት ያግኙ።</p>
+        
+        <div class="contact-info">
+            <!-- ቀጥታ ወደ Google Map የሚወስድ ሊንክ -->
+            <a href="https://www.google.com/maps/search/?api=1&query=VRQQ%2BH62%2C+Koye%2C+Oromia%2C+Addis+Ababa" target="_blank">📍 አድራሻችንን ካርታ ላይ ይመልከቱ</a>
+            
+            <!-- ቀጥታ ወደ ስልክ መደወያ የሚወስድ ሊንክ -->
+            <a href="tel:+251911019036">📞 አሁኑኑ ይደውሉ (091 101 9036)</a>
+        </div>
+    </div>
+
+    <!-- የመድኃኒቶች ዝርዝር ክፍል -->
+    <div class="container">
+        <h2 class="section-title">አሁን የሚገኙ የተለመዱ መድኃኒቶች</h2>
+        
+        <div class="medicines">
+            <!-- መድኃኒት 1 -->
+            <div class="card">
+                <h3>Paracetamol (ፓራሲታሞል 500mg)</h3>
+                <p class="price">50 ETB</p>
+                <p class="desc"><strong>ጥቅም፡</strong> ለራስ ምታት፣ ለትኩሳት እና ለተለያዩ ቀላል የሰውነት ህመሞች ማስታገሻነት ያገለግላል።</p>
+            </div>
+            
+            <!-- መድኃኒት 2 -->
+            <div class="card">
+                <h3>Amoxicillin (አሞክሲሲሊን 500mg)</h3>
+                <p class="price">150 ETB</p>
+                <p class="desc"><strong>ጥቅም፡</strong> ለተለያዩ የባክቴሪያ ኢንፌክሽኖች (እንደ ጉሮሮ ህመም፣ ጆሮ ኢንፌክሽን) የሚሰጥ ፀረ-ባክቴሪያ (Antibiotic)።</p>
+            </div>
+            
+            <!-- መድኃኒት 3 -->
+            <div class="card">
+                <h3>Ibuprofen (አይቡፕሮፌን 400mg)</h3>
+                <p class="price">80 ETB</p>
+                <p class="desc"><strong>ጥቅም፡</strong> ለጡንቻ ህመም፣ ለእብጠት፣ ለወር አበባ ህመም እና ለከባድ ራስ ምታት ማስታገሻ።</p>
+            </div>
+            
+            <!-- መድኃኒት 4 -->
+            <div class="card">
+                <h3>Omeprazole (ኦሜፕራዞል 20mg)</h3>
+                <p class="price">120 ETB</p>
+                <p class="desc"><strong>ጥቅም፡</strong> ለጨጓራ ህመም፣ ለቃር እና ለጨጓራ አሲድ መብዛት ፍቱን የሆነ መድኃኒት።</p>
+            </div>
+            
+            <!-- መድኃኒት 5 -->
+            <div class="card">
+                <h3>ORS (የተቅማጥ መድኃኒት)</h3>
+                <p class="price">30 ETB</p>
+                <p class="desc"><strong>ጥቅም፡</strong> በተቅማጥ ወይም በትውከት ምክንያት ከሰውነት ውስጥ የጠፋውን ፈሳሽ እና ማዕድን ለመተካት።</p>
+            </div>
+            
+            <!-- መድኃኒት 6 -->
+            <div class="card">
+                <h3>Vitamin C (ቫይታሚን ሲ)</h3>
+                <p class="price">100 ETB</p>
+                <p class="desc"><strong>ጥቅም፡</strong> የሰውነትን የበሽታ መከላከያ አቅም ለመጨመር እና ለጉንፋን/ኮመን ኮልድ መከላከያ።</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Walin Drug Store. መብቱ በህግ የተጠበቀ ነው።</p>
+    </footer>
+
+    <!-- ቀላል JavaScript ለ AI Button -->
+    <script>
+        function openAI() {
+            alert("የ AI ረዳት አገልግሎት በቅርቡ ይጀምራል! መድኃኒትዎን ለመጠየቅ ዝግጁ ይሁኑ።");
+        }
+    </script>
+</body>
+</html>
