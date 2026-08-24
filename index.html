@@ -5,220 +5,620 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Walin Drug Store | ዋሊን መድኃኒት መደብር</title>
     <style>
-        /* አጠቃላይ የድረ-ገጹ ዲዛይን */
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: #f4f7f6; 
+        /* CSS RESET & VARIABLES */
+        :root {
+            --primary: #059669;
+            --primary-dark: #047857;
+            --secondary: #0284c7;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --white: #ffffff;
+            --accent: #e11d48;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        
-        /* የላይኛው ክፍል (Header) ዲዛይን */
-        header { 
-            background-color: #ffffff; 
-            padding: 15px 30px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-        }
-        .logo-container { 
-            display: flex; 
-            align-items: center; 
-            gap: 15px; 
-        }
-        .logo { 
-            height: 70px; 
-            border-radius: 50%; 
-            object-fit: cover;
-        }
-        .logo-container h2 {
-            color: #0b5e3b;
+
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
         }
 
-        /* የ AI አገልግሎት ቁልፍ ዲዛይን */
-        .ai-btn { 
-            background-color: #007bff; 
-            color: white; 
-            padding: 10px 20px; 
-            border: none; 
-            border-radius: 20px; 
-            cursor: pointer; 
-            font-weight: bold;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-        .ai-btn:hover { 
-            background-color: #0056b3; 
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            line-height: 1.6;
         }
 
-        /* የመሀል ማስታወቂያ ክፍል (Hero Section) */
-        .hero { 
-            background-color: #28a745; 
-            color: white; 
-            text-align: center; 
-            padding: 50px 20px; 
-        }
-        .hero h1 { margin-top: 0; }
-        
-        /* የስልክ እና አድራሻ ማስፈንጠሪያዎች (Links) */
-        .contact-info {
-            margin-top: 20px;
-        }
-        .contact-info a { 
-            color: white; 
-            text-decoration: none; 
-            font-weight: bold; 
-            margin: 10px; 
-            display: inline-block; 
-            padding: 12px 20px; 
-            border: 2px solid white; 
-            border-radius: 30px; 
-            background-color: transparent;
-            transition: 0.3s;
-        }
-        .contact-info a:hover { 
-            background-color: white; 
-            color: #28a745; 
+        /* HEADER & NAVIGATION */
+        header {
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        /* የመድኃኒቶች ዝርዝር ዲዛይን */
-        .container { 
-            max-width: 1100px; 
-            margin: 40px auto; 
-            padding: 20px; 
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .section-title {
-            text-align: center; 
-            color: #28a745; 
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 800;
+            font-size: 1.4rem;
+        }
+
+        .brand svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .ai-btn {
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            color: var(--white);
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .ai-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* SECTION 1: HERO & ABOUT */
+        .hero {
+            background: linear-gradient(135deg, #047857 0%, #0f172a 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
             margin-bottom: 30px;
         }
-        .medicines { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 20px; 
-        }
-        .card { 
-            background: white; 
-            padding: 25px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-            border-top: 4px solid #28a745;
-            transition: 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .card h3 { 
-            color: #333; 
-            margin-top: 0; 
-        }
-        .price { 
-            color: #e83e8c; 
-            font-size: 1.3em; 
-            font-weight: bold; 
-            margin: 10px 0;
-        }
-        .desc { 
-            color: #555; 
-            line-height: 1.5; 
+
+        .status-badge {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.15);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
-        /* የግርጌ ማስታወሻ (Footer) */
+        /* SECTION 2: MEDICINES & SEARCH */
+        .section-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px 25px;
+            font-size: 1.1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 30px;
+            outline: none;
+            transition: border-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+
+        .grid-medicines {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .med-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .med-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+        }
+
+        .med-card h3 {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .med-card .price {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .click-hint {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            font-weight: 600;
+            background-color: #f0f9ff;
+            padding: 6px 12px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        /* SECTION 3: HEALTH TIPS & EXTRAS */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tip-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 5px solid var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .tip-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        /* SECTION 4: CONTACT & MAP */
+        .contact-section {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-map {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-call {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+
+        .btn-action:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        /* MODAL (DETAIL POPUP PAGE) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-body {
+            background: var(--white);
+            max-width: 550px;
+            width: 100%;
+            padding: 35px;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: modalSlide 0.3s ease;
+        }
+
+        @keyframes modalSlide {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f1f5f9;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .modal-title {
+            color: var(--primary-dark);
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+
+        .modal-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .modal-detail-box {
+            background-color: #f8fafc;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .modal-detail-box h4 {
+            color: var(--dark);
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .modal-detail-box p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: white;
-            margin-top: 40px;
+            padding: 30px;
+            background: var(--dark);
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 80px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .search-box input { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- የላይኛው ክፍል (Header) -->
+    <!-- NAVBAR -->
     <header>
-        <div class="logo-container">
-            <!-- ሎጎው እዚህ ይገባል (durag '.jpg) -->
-            <img src="durag '.jpg" alt="Walin Drug Store Logo" class="logo">
-            <h2>Walin Drug Store</h2>
-        </div>
-        <!-- የ AI አገልግሎት Button -->
-        <button class="ai-btn" onclick="openAI()">🤖 የ AI ረዳት</button>
+        <nav class="navbar">
+            <a href="#" class="brand">
+                <svg viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+                Walin Drug Store
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">ስለ እኛ</a></li>
+                <li><a href="#medicines">መድኃኒቶች</a></li>
+                <li><a href="#tips">ጤና መረጃ</a></li>
+                <li><a href="#contact">አድራሻ</a></li>
+            </ul>
+            <button class="ai-btn" onclick="openAI()">
+                <span>🤖</span> AI ረዳት
+            </button>
+        </nav>
     </header>
 
-    <!-- ዋና ማስተዋወቂያ (Hero Section) -->
-    <div class="hero">
-        <h1>እንኳን ወደ ዋሊን መድኃኒት መደብር በደህና መጡ!</h1>
-        <p>የታዘዘልዎትን መድኃኒት በፍጥነት እና በጥራት ያግኙ።</p>
-        
-        <div class="contact-info">
-            <!-- ቀጥታ ወደ Google Map የሚወስድ ሊንክ -->
-            <a href="https://www.google.com/maps/search/?api=1&query=VRQQ%2BH62%2C+Koye%2C+Oromia%2C+Addis+Ababa" target="_blank">📍 አድራሻችንን ካርታ ላይ ይመልከቱ</a>
-            
-            <!-- ቀጥታ ወደ ስልክ መደወያ የሚወስድ ሊንክ -->
-            <a href="tel:+251911019036">📞 አሁኑኑ ይደውሉ (091 101 9036)</a>
+    <!-- SECTION 1: ABOUT / HERO -->
+    <section id="about" class="hero">
+        <div class="hero-content">
+            <span class="status-badge">🟢 ክፍት ነው · እስከ ምሽቱ 10:30 PM ይዘጋል</span>
+            <h1>ዋሊን መድኃኒት መደብር</h1>
+            <p>ለጤናዎ የሚሆኑ ጥራት ያላቸው መድኃኒቶችን በታማኝነት እና በፍጥነት ያግኙ። የተሟላ የህክምና መድኃኒቶች አቅርቦት።</p>
         </div>
-    </div>
+    </section>
 
-    <!-- የመድኃኒቶች ዝርዝር ክፍል -->
-    <div class="container">
-        <h2 class="section-title">አሁን የሚገኙ የተለመዱ መድኃኒቶች</h2>
-        
-        <div class="medicines">
-            <!-- መድኃኒት 1 -->
-            <div class="card">
-                <h3>Paracetamol (ፓራሲታሞል 500mg)</h3>
-                <p class="price">50 ETB</p>
-                <p class="desc"><strong>ጥቅም፡</strong> ለራስ ምታት፣ ለትኩሳት እና ለተለያዩ ቀላል የሰውነት ህመሞች ማስታገሻነት ያገለግላል።</p>
-            </div>
+    <!-- SECTION 2: MEDICINES CATALOG & SEARCH -->
+    <section id="medicines" class="section-container">
+        <div class="section-header">
+            <h2>የመድኃኒቶች ዝርዝር</h2>
+            <p>የሚፈልጉትን መድኃኒት በስም ይፈልጉ፤ ለዝርዝር መረጃ መድኃኒቱን ይጫኑት።</p>
+        </div>
+
+        <!-- SEARCH BAR -->
+        <div class="search-box">
+            <input type="text" id="searchInput" onkeyup="searchMedicine()" placeholder="🔍 የመድኃኒት ስም እዚህ ይጻፉ (ለምሳሌ፡ Paracetamol)...">
+        </div>
+
+        <!-- MEDICINES GRID -->
+        <div class="grid-medicines" id="medicineGrid">
             
-            <!-- መድኃኒት 2 -->
-            <div class="card">
-                <h3>Amoxicillin (አሞክሲሲሊን 500mg)</h3>
-                <p class="price">150 ETB</p>
-                <p class="desc"><strong>ጥቅም፡</strong> ለተለያዩ የባክቴሪያ ኢንፌክሽኖች (እንደ ጉሮሮ ህመም፣ ጆሮ ኢንፌክሽን) የሚሰጥ ፀረ-ባክቴሪያ (Antibiotic)።</p>
+            <div class="med-card" onclick="showDetails('Paracetamol (ፓራሲታሞል 500mg)', '50 ETB', 'ለራስ ምታት፣ ለትኩሳት እና ለተለያዩ ቀላል የሰውነት ህመሞች ማስታገሻነት የሚያገለግል የተለመደ መድኃኒት።', 'በቀን ከ 1 እስከ 3 ጊዜ ከምግብ በኋላ በውሃ ይወሰዳል።', 'በቀን ከ 4 ግራም (8 እንክብል) በላይ መውሰድ ለጉበት ጉዳት ያጋልጣል።')">
+                <h3>Paracetamol 500mg</h3>
+                <div class="price">50 ETB</div>
+                <span class="click-hint">📄 ጥቅሙን ለማየት ይጫኑ</span>
             </div>
-            
-            <!-- መድኃኒት 3 -->
-            <div class="card">
-                <h3>Ibuprofen (አይቡፕሮፌን 400mg)</h3>
-                <p class="price">80 ETB</p>
-                <p class="desc"><strong>ጥቅም፡</strong> ለጡንቻ ህመም፣ ለእብጠት፣ ለወር አበባ ህመም እና ለከባድ ራስ ምታት ማስታገሻ።</p>
+
+            <div class="med-card" onclick="showDetails('Amoxicillin (አሞክሲሲሊን 500mg)', '180 ETB', 'ለተለያዩ የባክቴሪያ ኢንፌክሽኖች (እንደ ጉሮሮ ህመም፣ የጆሮ ኢንፌክሽን) የሚሰጥ ፀረ-ባክቴሪያ (Antibiotic)።', 'በሐኪም ትእዛዝ መሰረት በየ 8 ሰዓቱ ለ 5-7 ቀናት ይወሰዳል።', 'የታዘዘው ኮርስ ሳይጠናቀቅ ማቆም አይገባም።')">
+                <h3>Amoxicillin 500mg</h3>
+                <div class="price">180 ETB</div>
+                <span class="click-hint">📄 ጥቅሙን ለማየት ይጫኑ</span>
             </div>
-            
-            <!-- መድኃኒት 4 -->
-            <div class="card">
-                <h3>Omeprazole (ኦሜፕራዞል 20mg)</h3>
-                <p class="price">120 ETB</p>
-                <p class="desc"><strong>ጥቅም፡</strong> ለጨጓራ ህመም፣ ለቃር እና ለጨጓራ አሲድ መብዛት ፍቱን የሆነ መድኃኒት።</p>
+
+            <div class="med-card" onclick="showDetails('Ibuprofen (አይቡፕሮፌን 400mg)', '90 ETB', 'ለጡንቻ ህመም፣ ለእብጠት፣ ለወር አበባ ህመም እና ለከባድ ራስ ምታት ፍቱን ማስታገሻ።', 'ከምግብ በኋላ በበቂ ውሃ ይወሰዳል።', 'የጨጓራ ህመም ያለባቸው ሰዎች በጥንቃቄ መውሰድ አለባቸው።')">
+                <h3>Ibuprofen 400mg</h3>
+                <div class="price">90 ETB</div>
+                <span class="click-hint">📄 ጥቅሙን ለማየት ይጫኑ</span>
             </div>
-            
-            <!-- መድኃኒት 5 -->
-            <div class="card">
-                <h3>ORS (የተቅማጥ መድኃኒት)</h3>
-                <p class="price">30 ETB</p>
-                <p class="desc"><strong>ጥቅም፡</strong> በተቅማጥ ወይም በትውከት ምክንያት ከሰውነት ውስጥ የጠፋውን ፈሳሽ እና ማዕድን ለመተካት።</p>
+
+            <div class="med-card" onclick="showDetails('Omeprazole (ኦሜፕራዞል 20mg)', '130 ETB', 'ለጨጓራ ህመም፣ ለቃር እና ለጨጓራ አሲድ መብዛት መፍትሔ የሚሰጥ።', 'ጠዋት ቁርስ ከመበላቱ 30 ደቂቃ በፊት በባዶ ሆድ ይወሰዳል።', 'ለረጅም ጊዜ ያለ ሐኪም ትእዛዝ መወሰድ የለበትም።')">
+                <h3>Omeprazole 20mg</h3>
+                <div class="price">130 ETB</div>
+                <span class="click-hint">📄 ጥቅሙን ለማየት ይጫኑ</span>
             </div>
-            
-            <!-- መድኃኒት 6 -->
-            <div class="card">
-                <h3>Vitamin C (ቫይታሚን ሲ)</h3>
-                <p class="price">100 ETB</p>
-                <p class="desc"><strong>ጥቅም፡</strong> የሰውነትን የበሽታ መከላከያ አቅም ለመጨመር እና ለጉንፋን/ኮመን ኮልድ መከላከያ።</p>
+
+            <div class="med-card" onclick="showDetails('ORS (የተቅማጥ መድኃኒት)', '35 ETB', 'በተቅማጥ ወይም በትውከት ምክንያት ከሰውነት የጠፋውን ፈሳሽ እና ማዕድናት የሚተካ።', 'አንድ ፓኬት በ 1 ሊትር የተቀቀለና የተቀዘቀዘ ውሃ በጥብጦ መጠጣት።', 'የተበጠበጠው ፈሳሽ ከ 24 ሰዓት በኋላ መደፋት አለበት።')">
+                <h3>ORS Packets</h3>
+                <div class="price">35 ETB</div>
+                <span class="click-hint">📄 ጥቅሙን ለማየት ይጫኑ</span>
+            </div>
+
+            <div class="med-card" onclick="showDetails('Vitamin C 500mg', '110 ETB', 'የሰውነትን የበሽታ መከላከያ አቅም ለመገንባት እና ለጉንፋን መከላከያ።', 'በቀን አንድ ጊዜ ከምግብ በኋላ ይወሰዳል።', 'ከመጠን በላይ መወሰድ የሆድ መረበሽ ሊያመጣ ይችላል።')">
+                <h3>Vitamin C 500mg</h3>
+                <div class="price">110 ETB</div>
+                <span class="click-hint">📄 ጥቅሙን ለማየት ይጫኑ</span>
+            </div>
+
+            <div class="med-card" onclick="showDetails('Azithromycin 500mg', '320 ETB', 'ለከፍተኛ የሳምባ፣ የጉሮሮ እና የቆዳ ባክቴሪያ ኢንፌክሽኖች የሚሰጥ።', 'በቀን 1 እንክብል ለ 3 ቀናት ብቻ በሐኪም ትእዛዝ ይወሰዳል።', 'የልብ ህመም ያለባቸው ሰዎች ለሐኪም ማሳወቅ አለባቸው።')">
+                <h3>Azithromycin 500mg</h3>
+                <div class="price">320 ETB</div>
+                <span class="click-hint">📄 ጥቅሙን ለማየት ይጫኑ</span>
+            </div>
+
+            <div class="med-card" onclick="showDetails('Cetirizine 10mg', '75 ETB', 'ለአለርጂ፣ ለውሃር፣ ለቺክቺክ እና ለክፉ ጉንፋን ምልክቶች ማስታገሻ።', 'በቀን አንድ ጊዜ ማታ ከመተኛት በፊት ይወሰዳል።', 'እስክንድር የሚያስይዝ በመሆኑ መኪና ሲያሽከረክሩ አይውሰዱ።')">
+                <h3>Cetirizine 10mg</h3>
+                <div class="price">75 ETB</div>
+                <span class="click-hint">📄 ጥቅሙን ለማየት ይጫኑ</span>
+            </div>
+
+            <div class="med-card" onclick="showDetails('Metformin 500mg', '160 ETB', 'የስኳር ህመምተኞች የደም ስኳር መጠናቸውን ለመቆጣጠር የሚወስዱት።', 'በሐኪም ትእዛዝ መሰረት ከምግብ ጋር ይወሰዳል።', 'መደበኛ የደም ስኳር ምርመራ ማድረግ ያስፈልጋል።')">
+                <h3>Metformin 500mg</h3>
+                <div class="price">160 ETB</div>
+                <span class="click-hint">📄 ጥቅሙን ለማየት ይጫኑ</span>
+            </div>
+
+            <div class="med-card" onclick="showDetails('Salbutamol Inhaler', '450 ETB', 'ለአስም እና ለተዘጋ የትንፋሽ ቧንቧ ፈጣን እፎይታ የሚሰጥ።', 'የትንፋሽ እጥረት ሲያጋጥም 1-2 ጊዜ መሳብ።', 'ሁልጊዜም ከእጅዎ እንዳይለይ በጥንቃቄ ይያዙ።')">
+                <h3>Salbutamol Inhaler</h3>
+                <div class="price">450 ETB</div>
+                <span class="click-hint">📄 ጥቅሙን ለማየት ይጫኑ</span>
+            </div>
+
+            <div class="med-card" onclick="showDetails('Paracetamol Syrup (ሕፃናት)', '120 ETB', 'ለሕፃናትና ለታዳጊዎች ትኩሳት እና ህመም ማስታገሻ ሽሮፕ።', 'በሕፃኑ እድሜ እና ኪሎ መሰረት በመለኪያ የሚሰጥ።', 'ከህፃናት እጅ ርቆ መቀመጥ አለበት።')">
+                <h3>Paracetamol Syrup</h3>
+                <div class="price">120 ETB</div>
+                <span class="click-hint">📄 ጥቅሙን ለማየት ይጫኑ</span>
+            </div>
+
+            <div class="med-card" onclick="showDetails('Multivitamin Tablets', '200 ETB', 'ለአጠቃላይ የሰውነት ጥንካሬ እና አስፈላጊ ቪታሚኖችን ለማሟላት።', 'በቀን 1 እንክብል ከቁርስ በኋላ።', 'የተመጣጠነ ምግብን አይተካም።')">
+                <h3>Multivitamin Tabs</h3>
+                <div class="price">200 ETB</div>
+                <span class="click-hint">📄 ጥቅሙን ለማየት ይጫኑ</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 3: HEALTH TIPS & EXTRAS -->
+    <section id="tips" class="section-container">
+        <div class="section-header">
+            <h2>አስፈላጊ የጤና መረጃዎች</h2>
+            <p>ከመድኃኒት አጠቃቀም ጋር ተያይዘው ሊታወቁ የሚገባቸው ነጥቦች</p>
+        </div>
+
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h3>📋 የሐኪም ማዘዣ (Prescription)</h3>
+                <p>አንቲባዮቲክስ እና ጠንካራ መድኃኒቶችን ያለ ሐኪም ማዘዣ መውሰድ ለጤናዎ አደገኛ ነው። እባክዎን የሐኪም ማዘዣዎን ይዘው ይምጡ።</p>
+            </div>
+            <div class="tip-card">
+                <h3>🌡️ የመድኃኒት አቀማመጥ</h3>
+                <p>መድኃኒቶችን ከቀጥታ የፀሐይ ብርሃን እና ከከፍተኛ ሙቀት ውጪ በደረቅና ቀዝቃዛ ቦታ ያስቀምጡ። ሁልጊዜም ከህፃናት እጅ ያርቁ።</p>
+            </div>
+            <div class="tip-card">
+                <h3>🚨 የድንገተኛ ጊዜ ድጋፍ</h3>
+                <p>ከባድ የመድኃኒት አለርጂ (የፊት እብጠት፣ የትንፋሽ ቁራጭ) ካጋጠመዎት አሁኑኑ ወደ ቅርብ ህክምና ተቋም ያምሩ።</p>
             </div>
         </div>
-    </div>
+    </section>
 
+    <!-- SECTION 4: CONTACT & GOOGLE MAPS -->
+    <section id="contact" class="section-container">
+        <div class="contact-section">
+            <h2>እኛን ያግኙን / አድራሻችን</h2>
+            <p>ኮዬ፣ ኦሮሚያ (አዲስ አበባ) — VRQQ+H62, Koye</p>
+            <p><strong>የስራ ሰዓት፡</strong> በየቀኑ እስከ ምሽቱ 10:30 PM ክፍት ነው</p>
+
+            <div class="action-buttons">
+                <!-- GOOGLE MAPS LINK -->
+                <a href="https://www.google.com/maps/search/?api=1&query=VRQQ%2BH62%2C+Koye%2C+Oromia%2C+Addis+Ababa" target="_blank" class="btn-action btn-map">
+                    📍 በ Google Maps አድራሻውን ይክፈቱ
+                </a>
+                
+                <!-- PHONE CALL LINK -->
+                <a href="tel:+251911019036" class="btn-action btn-call">
+                    📞 አሁኑኑ ይደውሉ (091 101 9036)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Walin Drug Store. መብቱ በህግ የተጠበቀ ነው።</p>
+        <p>&copy; 2026 Walin Drug Store (ዋሊን መድኃኒት መደብር)። መብቱ በህግ የተጠበቀ ነው።</p>
     </footer>
 
-    <!-- ቀላል JavaScript ለ AI Button -->
+    <!-- DETAIL POPUP MODAL -->
+    <div class="modal-overlay" id="detailModal">
+        <div class="modal-body">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 class="modal-title" id="mTitle">መድኃኒት</h3>
+            <div class="modal-price" id="mPrice">0 ETB</div>
+            
+            <div class="modal-detail-box">
+                <h4>📌 ጥቅሙ እና አገልግሎቱ፡</h4>
+                <p id="mDesc">-</p>
+            </div>
+
+            <div class="modal-detail-box">
+                <h4>💊 የአወሳሰድ መመሪያ፡</h4>
+                <p id="mUsage">-</p>
+            </div>
+
+            <div class="modal-detail-box">
+                <h4>⚠️ ጥንቃቄ፡</h4>
+                <p id="mCaution" style="color: var(--accent);">-</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR INTERACTION -->
     <script>
+        // Search functionality
+        function searchMedicine() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('med-card');
+            
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+                if (title.includes(input)) {
+                    cards[i].style.display = "block";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+
+        // Show medicine details modal
+        function showDetails(name, price, desc, usage, caution) {
+            document.getElementById('mTitle').innerText = name;
+            document.getElementById('mPrice').innerText = price;
+            document.getElementById('mDesc').innerText = desc;
+            document.getElementById('mUsage').innerText = usage;
+            document.getElementById('mCaution').innerText = caution;
+            document.getElementById('detailModal').style.display = 'flex';
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('detailModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside box
+        window.onclick = function(event) {
+            let modal = document.getElementById('detailModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // AI Assistant placeholder
         function openAI() {
-            alert("የ AI ረዳት አገልግሎት በቅርቡ ይጀምራል! መድኃኒትዎን ለመጠየቅ ዝግጁ ይሁኑ።");
+            alert("🤖 የ ዋሊን መድኃኒት መደብር AI ረዳት፡\n\nእንኳን ደህና መጡ! በቅርቡ የመድኃኒት ትእዛዝ እና ጥያቄዎችን በ AI የማስተናገድ አገልግሎታችን ይጀምራል። ለበለጠ መረጃ በ 0911019036 ይደውሉልን።");
         }
     </script>
 </body>
